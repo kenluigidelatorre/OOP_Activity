@@ -1,0 +1,49 @@
+Using System;
+Using System.Linq;
+Using System.Collections.Generic;
+
+Namespace HelloWold;
+
+Public static class Program
+{
+    Public static void Main(String[] args)
+    {
+        List<string> names = new List<string>();
+        List<int> scores = new List<int>();
+
+        Console.WriteLine(“Enter names and quiz scores:”);
+
+        For (int I = 0; I < 10; i++)
+        {
+            Console.Write($”Student {I + 1} name: “);
+            Names.Add(Console.ReadLine());
+
+            Console.Write(“Score: “);
+            Int scores.(Console.ReadLine());
+        }
+
+        For (int I = 0; I < scores.Count – 1; i++)
+        {
+            For (int j = I + 1; j < scores.Count; j++)
+            {
+                If (scores[j] > scores[i])
+                {
+                    Int tempScore = scores[i];
+                    Scores[i] = scores[j];
+                    Scores[j] = tempScore;
+
+                    String tempName = names[i];
+                    Names[i] = names[j];
+                    Names[j] = tempName;
+                }
+            }
+        }
+
+        Console.WriteLine(“\nTop 3 Students:”);
+        For (int I = 0; I < 3; i++)
+        {
+            Console.WriteLine($”{names[i]} – {scores[i]}”);
+        }
+    }
+}
+
