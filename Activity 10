@@ -1,0 +1,44 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<int> all = new List<int>();
+        List<int> even = new List<int>();
+        List<int> odd = new List<int>();
+
+        Console.WriteLine(“Enter 12 numbers:”);
+
+        for (int I = 0; I < 12; i++)
+        {
+            Console.Write($”Number {I + 1}: “);
+            int num = Convert.ToInt32(Console.ReadLine());
+            all.Add(num);
+
+            if (num % 2 == 0)
+            {
+                even.Add(num);
+            }
+            else
+            {
+                odd.Add(num);
+            }
+        }
+        Console.WriteLine(“\nEven numbers:”);
+        foreach (int e in even)
+        {
+            Console.WriteLine($”{e}”);
+        }
+
+        Console.WriteLine(“\nOdd numbers:”);
+        foreach (int o in odd)
+        {
+            Console.WriteLine($”{o}”);
+        }
+    }
+}
