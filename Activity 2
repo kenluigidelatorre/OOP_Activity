@@ -1,0 +1,54 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        Console.WriteLine("Enter price(Enter -1 to finish )");
+        List<decimal> prices = new List<decimal>();
+
+        while (true)
+        {
+            Console.Write("Enter item price: ");
+            string input = Console.ReadLine();
+            decimal price;
+
+            if (decimal.TryParse(input, out price))
+            {
+                if (price == -1)
+                {
+                    break;
+                }
+                else if (price < 0)
+                {
+                    Console.WriteLine("Invalid price.");
+                }
+                else
+                {
+                    prices.Add(price);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+            }
+        }
+
+        if (prices.Count > 0)
+        {
+            Console.WriteLine($"\nTotal items: {prices.Count}");
+            Console.WriteLine($"Average price: {prices.Average():F2}");
+            Console.WriteLine($"Highest price: {prices.Max():F2}");
+            Console.WriteLine($"Lowest price: {prices.Min():F2}");
+        }
+        else
+        {
+            Console.WriteLine("No items were added.");
+        }
+    }
+}
+
