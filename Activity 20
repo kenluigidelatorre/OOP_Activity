@@ -1,0 +1,60 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<int> grades = new List<int>();
+        int countA = 0;
+        int countB = 0;
+        int countC = 0;
+        int countD = 0;
+        int countF = 0;
+
+        Console.WriteLine("Enter 10 student grades (from 0 to 100):");
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Grade #{i + 1}: ");
+            int grade = Convert.ToInt32(Console.ReadLine());
+            grades.Add(grade);
+
+            switch (grade / 10)
+            {
+                case 10:    // 100
+                case 9:     // 90–99
+                    countA++;
+                    break;
+                case 8:     // 80–89
+                    countB++;
+                    break;
+                case 7:     // 70–79
+                    countC++;
+                    break;
+                case 6:     // 60–69
+                    countD++;
+                    break;
+                default:    // 0–59
+                    countF++;
+                    break;
+            }
+        }
+
+        Console.WriteLine("\nGrade Summary:");
+        Console.WriteLine($"A: {countA}");
+        Console.WriteLine($"B: {countB}");
+        Console.WriteLine($"C: {countC}");
+        Console.WriteLine($"D: {countD}");
+        Console.WriteLine($"F: {countF}");
+
+        Console.WriteLine("\nAll Entered Grades:");
+        foreach (int g in grades)
+        {
+            Console.WriteLine(g);
+        }
+    }
+}
