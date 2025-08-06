@@ -1,0 +1,39 @@
+using System;
+using System.Linq;
+Using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        Console.WriteLine(“Enter name of Cities.(Type ‘exit’ to finish.)”);
+        List<string> cities = new List<string>();
+        string city;
+
+        Console.WriteLine(“Enter city names: “);
+
+        while (true)
+        {
+            city = Console.ReadLine();
+
+            if (city.ToLower() == “exit”)
+            {
+                break;
+            }
+
+            cities.Add(city);
+        }
+
+        List<string> finalCities = cities.Distinct().ToList();
+        finalCities.Sort();
+
+        Console.WriteLine(“\nCities in alphabetical order: “);
+        foreach (string c in finalCities)
+        {
+            Console.WriteLine(c);
+        }
+    }
+}
+
