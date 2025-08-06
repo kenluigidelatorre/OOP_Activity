@@ -1,0 +1,34 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> usernames = new List<string>();
+
+        Console.WriteLine("Enter 5 usernames:");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Username {i + 1}: ");
+            string name = Console.ReadLine();
+            usernames.Add(name);
+        }
+
+        Console.Write("\nEnter a character to search: ");
+        string inputChar = Console.ReadLine().ToLower();
+
+        Console.WriteLine("\nUsernames that contain the character:");
+        foreach (string user in usernames)
+        {
+            if (user.ToLower().Contains(inputChar))
+            {
+                Console.WriteLine(user);
+            }
+        }
+    }
+}
+
