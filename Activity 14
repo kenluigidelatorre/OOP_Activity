@@ -1,0 +1,48 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> countries = new List<string>
+        {
+            "philippines", "japan", "france", "italy", "canada",
+            "germany", "brazil", "china", "spain", "australia"
+        };
+
+        List<string> capitals = new List<string>
+        {
+            "Manila", "Tokyo", "Paris", "Rome", "Ottawa",
+            "Berlin", "Brasília", "Beijing", "Madrid", "Canberra"
+        };
+
+        Console.Write("\nEnter a country: ");
+        string input = Console.ReadLine().ToLower();
+        bool found = false;
+
+        for (int i = 0; i < countries.Count; i++)
+        {
+            if (countries[i] == input)
+            {
+                Console.WriteLine($"The capital of {Capitalize(input)} is {capitals[i]}.");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("Country not found.");
+        }
+    }
+
+    static string Capitalize(string word)
+    {
+        return char.ToUpper(word[0]) + word.Substring(1);
+    }
+}
+
