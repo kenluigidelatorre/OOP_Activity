@@ -1,0 +1,41 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> attendees = new List<string>();
+        string input;
+
+        Console.WriteLine("Enter names of students logging in (type 'done' to finish):");
+
+        while (true)
+        {
+            Console.Write("Name: ");
+            input = Console.ReadLine();
+
+            if (input.ToLower() == "done")
+            {
+                break;
+            }
+
+            if (!attendees.Contains(input))
+            {
+                attendees.Add(input);
+            }
+        }
+
+        attendees.Sort();
+
+        Console.WriteLine($"\nTotal unique attendees: {attendees.Count}");
+        Console.WriteLine("List of attendees:");
+        foreach (string name in attendees)
+        {
+            Console.WriteLine(name);
+        }
+    }
+}
