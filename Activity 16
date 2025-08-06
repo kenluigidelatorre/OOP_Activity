@@ -1,0 +1,78 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> cart = new List<string>();
+        bool running = true;
+
+        while (running)
+        {
+            Console.WriteLine("\nShopping Cart Menu:");
+            Console.WriteLine("1. Add Item");
+            Console.WriteLine("2. Remove Item");
+            Console.WriteLine("3. View Cart");
+            Console.WriteLine("4. Clear Cart");
+            Console.WriteLine("5. Exit");
+            Console.Write("Choose an option: ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    Console.Write("Enter product to add: ");
+                    string addItem = Console.ReadLine();
+                    cart.Add(addItem);
+                    Console.WriteLine($"{addItem} added to cart.");
+                    break;
+
+                case "2":
+                    Console.Write("Enter product to remove: ");
+                    string removeItem = Console.ReadLine();
+                    if (cart.Remove(removeItem))
+                    {
+                        Console.WriteLine($"{removeItem} removed from cart.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Item not found in cart.");
+                    }
+                    break;
+
+                case "3":
+                    Console.WriteLine("\nItems in cart:");
+                    if (cart.Count == 0)
+                    {
+                        Console.WriteLine("Cart is empty.");
+                    }
+                    else
+                    {
+                        foreach (string item in cart)
+                        {
+                            Console.WriteLine($"- {item}");
+                        }
+                    }
+                    break;
+
+                case "4":
+                    cart.Clear();
+                    Console.WriteLine("Cart cleared.");
+                    break;
+
+                case "5":
+                    running = false;
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid option. Try again.");
+                    break;
+            }
+        }
+    }
+}
+
