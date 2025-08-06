@@ -1,0 +1,46 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> originalWords = new List<string>();
+        List<string> modifiedWords = new List<string>();
+
+        Console.Write("How many words will you enter? ");
+        int count = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write($"Word #{i + 1}: ");
+            string word = Console.ReadLine();
+            originalWords.Add(word);
+
+            string replaced = "";
+
+            foreach (char c in word)
+            {
+                if ("aeiouAEIOU".Contains(c))
+                {
+                    replaced += "*";
+                }
+                else
+                {
+                    replaced += c;
+                }
+            }
+
+            modifiedWords.Add(replaced);
+        }
+
+        Console.WriteLine("\nOriginal and Modified Words:");
+        for (int i = 0; i < count; i++)
+        {
+            Console.WriteLine($"{originalWords[i]}  >  {modifiedWords[i]}");
+        }
+    }
+}
