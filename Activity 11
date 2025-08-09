@@ -1,0 +1,47 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> empNames = new List<string>();
+        List<float> empPay = new List<float>();
+
+        Console.Write("How many employees? ");
+        int total = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < total; i++)
+        {
+            Console.Write($"Name of employee {i + 1}: ");
+            empNames.Add(Console.ReadLine());
+
+            Console.Write($"Salary of employee {i + 1}: ");
+            empPay.Add(float.Parse(Console.ReadLine()));
+        }
+
+        for (int i = 0; i < total; i++)
+        {
+            if (empPay[i] < 15000)
+                empPay[i] *= 1.05f;
+            else if (empPay[i] <= 30000)
+                empPay[i] *= 1.03f;
+        }
+
+        Console.WriteLine("\nNew Salaries:");
+        for (int i = 0; i < total; i++)
+        {
+            Console.WriteLine($"{empNames[i]}: {empPay[i]:F2}");
+        }
+
+        Console.WriteLine("\nAbove 25,000:");
+        for (int i = 0; i < total; i++)
+        {
+            if (empPay[i] > 25000)
+                Console.WriteLine($"{empNames[i]}: {empPay[i]:F2}");
+        }
+    }
+}
