@@ -1,0 +1,51 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace HelloWold;
+
+public static class Program
+{
+    public static void Main(String[] args)
+    {
+        List<string> originalWords = new List<string>();
+        List<string> modifiedWords = new List<string>();
+
+        Console.WriteLine("Enter words (type 'end' to stop):");
+
+        while (true)
+        {
+            string input = Console.ReadLine();
+
+            if (input.ToLower() == "end")
+                break;
+
+            originalWords.Add(input);
+            modifiedWords.Add(ChangeVowels(input));
+        }
+
+        Console.WriteLine("\nBefore\t\tAfter");
+        Console.WriteLine("-------------------------");
+
+        for (int i = 0; i < originalWords.Count; i++)
+        {
+            Console.WriteLine($"{originalWords[i]}\t\t{modifiedWords[i]}");
+        }
+    }
+
+    static string ChangeVowels(string word)
+    {
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+        char[] letters = word.ToCharArray();
+
+        for (int i = 0; i < letters.Length; i++)
+        {
+            if (Array.Exists(vowels, v => v == Char.ToLower(letters[i])))
+            {
+                letters[i] = '*';
+            }
+        }
+
+        return new string(letters);
+    }
+}
